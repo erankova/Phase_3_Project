@@ -30,7 +30,7 @@ The dataset contains data on the customers of a Telecom company. Each row repres
 - `phone_number` can be dropped as there are no duplicate entries
 
 #### Class Imbalance
-This is an imbalanced dataset, with 14.5% of customers lost, balancing will be necessary 
+This is an imbalanced dataset, with 14.5% of customers lost, balancing will be necessary. 
 
 <p align="center"><img src="Images/Class Imbalance.jpeg" /></p>
 
@@ -44,7 +44,7 @@ In addition, there is a near perfect correlation between `number_vmail_messages`
 Lastly, there are a couple of weak correlations associated with our target `churn` variable; It seems `customer_service_calls`, `international_plan` and `total_day_minutes` have a slight positive correlation with churn. 
 > While weak correlations, we would want to consider including these features in our models.
 
-![alt text](Phase_3_Project/Images/Data Exploration Heatmap.jpeg)
+<p align="center"><img src="Images/Data Exploration Heatmap.jpeg" /></p>
 
 # Data Preperation
 
@@ -79,7 +79,7 @@ For our 3rd model we took a manual approach and redefined the DataFrame criteria
 
 We decided to only include highly correlated variables since we had previously stated there were some features which had extremely high correlations with eachother. For this model we were left with only the features seen below in a heatmap no longer demonstrating any co-linearity.
 
-![alt text](Phase_3_Project/Images/Model 3 Heatmap.jpeg)
+<p align="center"><img src="Images/Data Exploration Heatmap.jpeg"/></p>
 
 Since tranforming column names applies generally to the dataframe, we did not have to repeat this as it was already complete as the first pre-processing step.
 
@@ -104,7 +104,7 @@ To start, we evaluate a basic `LogisticRegression` model, before applying `SMOTE
 
 **Comparing our first `LogisticRegression` model with our `base`**, we can see that our `LogisticRegression` model does somewhat better at predicting `churn` with a higher True Positive Rate than our `base`.
 
-![alt text](Phase_3_Project/Images/Base vs Log.jpeg)
+<p align="center"><img src="Images/Base vs Log.jpeg"></p>
 
 To choose the right solver, we run this model with both L1 and L2 solvers. It looks like the Logisic L1 model does better than both previous models but only slightly. However our class imbalance makes it difficult to assess accurately and needs to be addressed.
 
@@ -131,7 +131,7 @@ Our Logistic Select model did pretty well! It performed slightly better at recal
 
 [add table?]
 
-![Log L1 vs Log Select](Phase_3_Project/Images/Log L1 vs Log Select.jpeg)
+<p align="center"><img src="Images/Log L1 vs Log Select.jpeg"></p>
 
 ### 3rd Model
 
