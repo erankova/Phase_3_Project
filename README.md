@@ -94,12 +94,12 @@ Focusing on predicting churn, we will focus on finetuning to the `recall` metric
 
 Our business initiatives are not high risk so a somewhat disproportionate amount of False Positives (customers predicted to churn who are retained) is tolerated and approach to this sect of customers will be addressed within our evaluation and recommendations.
 
-#### Base Model
+### Base Model
 We build our base model with `DummyClassifier` using the `stratified` strategy since we have an imbalanced dataset skewed in the direction of class 0 when we are interested in predicting class 1. We do not apply `SMOTE` here to get truly baseline results.
 
 From the get go our Base model produced an average `accuracy` score of ~0.75. This is a good start and gives us confidence to proceed with improving our `recall` and still maintianing fairly balanced results.
 
-#### 1st Model
+### 1st Model
 To start, we evaluate a basic `LogisticRegression` model, before applying `SMOTE`. We use the detault L2 penalty with this initial model.
 
 **Comparing our first `LogisticRegression` model with our `base`**, we can see that our `LogisticRegression` model does somewhat better at predicting `churn` with a higher True Positive Rate than our `base`.
@@ -110,15 +110,32 @@ To choose the right solver, we run this model with both L1 and L2 solvers. It lo
 
 After applying `SMOTE` with an even 0:1 split, we cross validate our model with the `ModCrossVal` class created to make cross validation an easier process, in which we specify `scoring = 'recall'`. Our model performs nearly the same on the train and test (validation) data. We can probably get this even higher after we simplify our model some more.
 
-<center>![image](https://github.com/erankova/Phase_3_Project/assets/155934070/b9e0b013-aa21-46f4-ab83-c5faeee14514)</center><br>
+[add table?]
 
 **Finetuning `C` with Cross Validation:** Creating a loop to test out `C` values [0.0001, 0.001, 0.01, 0.1, 1] we find that the lowest `C` yields the highest `recall`. 
 
 Our optimized results after finetuning the `C` look pretty good, though around the same as before optimization. Once we attempt to simplify some more, we will want to look at other scores such as accuracy and precision to make sure our results are balanced enough for the business problem at hand.
 
-<center>![image](https://github.com/erankova/Phase_3_Project/assets/155934070/5b7d0d2a-a1db-4255-9c0f-be1a0b12cbd6)</center>
+[add table?]
 
-#### 2nd Model
+### 2nd Model
+As prevously stated, we know that there are features that are highly correlated. We use `SelectFromModel` to select features for us that are most important. After additional preprocessing with `SelectFromModel` we run and cross validate using the same `ModCrossVal` class.
 
+We will use the default threshold to start and identify which features meet threshold requirements. Since we are still using our L1 Logistic model, the default threshold will be $1e^-5$. It looks like there are several features that do not meet the threshold.
 
-   
+**Before finetuning** our selected feature model did around the same as our Logistic L1 model before finetuning. It is worth noting that this is a simpler model as it has reduced features. 
+
+**Finetuning `C` with Cross Validation:** Just like our Logreg L1 model, the Logreg Select model does best with smaller `C` values, so we will want to use the smallest value with our optimized model.
+
+Our Logistic Select model did pretty well! It performed slightly better at recall than our first Logtistic L1 model.
+
+[add table?]
+
+![alt text](Phase_3_Project/Images/Log L1 vs Log Select.jpeg)
+
+### 3rd Model
+
+For our final itteration of the LogisticRegression model we should try manual feature selection with features we know to be highly correlated with `churn`. 
+
+Here we redefined our DataFrame
+
