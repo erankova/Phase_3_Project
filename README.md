@@ -32,7 +32,7 @@ The dataset contains data on the customers of a Telecom company. Each row repres
 #### Class Imbalance
 This is an imbalanced dataset, with 14.5% of customers lost, balancing will be necessary 
 
-![alt text] (Phase_3_Project/Images/Class Imbalance.jpeg)
+<p align="center"><img src="Images/Class Imbalance.jpeg" /></p>
 
 #### There are several correlations worth noting:
 `total_intl_charge`, `total_day_charge`, total_eve_charge`, and `total_night_charge` is perfectly correlated with `total_intl_minutes`, `total_day_minutes`, total_eve_minutes`, and `total_night_minutes` respectively. This makes sense since the company is charging by the minute. 
@@ -112,7 +112,7 @@ After applying `SMOTE` with an even 0:1 split, we cross validate our model with 
 
 [add table?]
 
-**Finetuning `C` with Cross Validation:** Creating a loop to test out `C` values [0.0001, 0.001, 0.01, 0.1, 1] we find that the lowest `C` yields the highest `recall`. 
+**Finetuning `C` with Cross Validation:** Creating a loop to test out `C` values `[0.0001, 0.001, 0.01, 0.1, 1]` we find that the lowest `C` yields the highest `recall`. 
 
 Our optimized results after finetuning the `C` look pretty good, though around the same as before optimization. Once we attempt to simplify some more, we will want to look at other scores such as accuracy and precision to make sure our results are balanced enough for the business problem at hand.
 
@@ -125,7 +125,7 @@ We will use the default threshold to start and identify which features meet thre
 
 **Before finetuning** our selected feature model did around the same as our Logistic L1 model before finetuning. It is worth noting that this is a simpler model as it has reduced features. 
 
-**Finetuning `C` with Cross Validation:** Just like our Logreg L1 model, the Logreg Select model does best with smaller `C` values, so we will want to use the smallest value with our optimized model.
+**Finetuning `C` with Cross Validation:** Just like our Logreg L1 model and using the same test `C` values, the Logreg Select model does best with smaller `C` values, so we will want to use the smallest value with our optimized model.
 
 Our Logistic Select model did pretty well! It performed slightly better at recall than our first Logtistic L1 model.
 
@@ -139,4 +139,23 @@ For our final itteration of the LogisticRegression model we should try manual fe
 
 Here we redefined our DataFrame:
 
-<center>![3rd Model DataFrame](https://github.com/erankova/Phase_3_Project/blob/19177be3c607fadfbc890c9a19d165b43316d727/Images/3rd%20Model%20DataFrame.png)</center>
+![3rd Model DataFrame](https://github.com/erankova/Phase_3_Project/blob/19177be3c607fadfbc890c9a19d165b43316d727/Images/3rd%20Model%20DataFrame.png)
+
+ **Before finetuning** and after performing a new split and re-applying `SMOTE` to the fresh data, we run our results. Our model performs slightly worse than our previous two.
+
+**Finetuning `C` with Cross Validation:** Using a different set of tests `C` values `[0.00015, 0.0002, 0.0015, 0.002, .015]` , the smallest `C` values gives us the best results. We will again, use the smallest value within our optimized results.
+
+We get an extremely high recall score after optimizing! We will definitely want to make sure we balance accuracy within our decision making process. All in all, it seems like our manual feature selection yields the best recall.
+
+It is also great to see that our bias and variance are balanced as our train and validation performance on all models is mostly even.
+
+![Logreg Result Summary] ()
+
+### Compare Optimized Logistic Models
+
+Comparing confusion matrices of all 3 `LogisticRegression` models, our most recent Logistic Reduced model does best at predicting True Positives (customers going to churn) and reducing False Negatives (customers appearing to be retained but who actually churn).
+
+This can provide valuable intervention insights to our stakeholders given a strategic approach to address the high amount False Positives (customers appearing to potentially churn but actually end up retained).
+
+![Logistic Model Comparison] (https://github.com/erankova/Phase_3_Project/blob/26fbc86fc8f243d495fc77d9c3b1fb6f9045a231/Images/Logistic%20Model%20Comparison.jpeg)
+
