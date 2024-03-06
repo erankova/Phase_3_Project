@@ -139,4 +139,4 @@ For our final itteration of the LogisticRegression model we should try manual fe
 
 Here we redefined our DataFrame:
 
-![3rd Model DataFrame](https://github.com/erankova/Phase_3_Project/blob/19177be3c607fadfbc890c9a19d165b43316d727/Images/3rd%20Model%20DataFrame.png)
+<center>![3rd Model DataFrame](https://github.com/erankova/Phase_3_Project/blob/19177be3c607fadfbc890c9a19d165b43316d727/Images/3rd%20Model%20DataFrame.png)</center>
