@@ -1,4 +1,4 @@
-# Phase_3_Project
+# Know Your Customer
 
 ### David Johnson and Elina Rankova
 
@@ -6,7 +6,7 @@
 
 <u>image source</u>: <a href="https://www.linkedin.com/pulse/churn-analysis-smriti-saini/">Churn Analysis Article</a>
 
-# Business Problem and Understanding
+## Business Problem and Understanding
 
 **Stakeholders:** Director of Member Operations, Member Operations Manager, Member Retention Manager, Member Support Manager
 
@@ -14,7 +14,7 @@ The business problem at hand is to predict customer churn for SyriaTel, a teleco
 
 **The goal:** Create a model to predict churn in telecom members contacting support. We are aiming to reduce the amount of cases in which members are mistakenly identified as retained (false negative) vs mistakenly identified as churned to ensure we capture all members who may churn (positive).
 
-# Data Understanding and Exploration
+## Data Understanding and Exploration
 
 For this analysis, the SyriaTel churn data was sourced from <a href = "https://www.kaggle.com/datasets/becksddf/churn-in-telecoms-dataset">Kaggle</a>
 
@@ -44,11 +44,11 @@ Lastly, there are a couple of weak correlations associated with our target `chur
 
 <p align="center"><img src="Images/Data Exploration Heatmap.jpeg" /></p>
 
-# Data Preperation
+## Data Preperation
 
 To prepare the data for modeling, several steps had to be taken as described below. All train/test splits maintain the default .75/.25 proportion respectively. We know we have class imbalance, so we will have `stratify = y` so our class proportions stay the same for both our train and test data.
 
-## Model 1 & 2
+### Model 1 & 2
 Given our selected approach to these `LogisticRegression` models, we had slightly different steps applied depending on the model. All train/test splits maintain 
 
 #### Pre-Split
@@ -69,7 +69,7 @@ For the first two models we used `OneHotEncoder` to transform the `area_code` an
 
 **Model 2 with `SelectFromModel`** to aid with important feature selection we called on this meta-transformer to reduce our 
 
-## Model 3
+### Model 3
 
 For our 3rd model we took a manual approach and redefined the DataFrame criteria which lead us to having to conduct a fresh train/test split.
 
@@ -86,7 +86,7 @@ Since tranforming column names applies generally to the dataframe, we did not ha
 Since we redefined a new `X` and `y` we also applied `SMOTE` to this fresh data set, creating reduced versious of our training data. 
 > Sinced we eliminated any categorical columns in need of transformation, the `OneHotEncoder` was not necessary for this model.
 
-# Modeling
+## Modeling
 
 Focusing on predicting churn, we will focus on finetuning to the `recall` metric to ensure we are predicting as many True Positive results (customers predicted to churn who churn) and reducing False Negative (customers predicted to be retained who churn) as much as possible. 
 
@@ -108,13 +108,13 @@ To choose the right solver, we run this model with both L1 and L2 solvers. It lo
 
 After applying `SMOTE` with an even 0:1 split, we cross validate our model with the `ModCrossVal` class created to make cross validation an easier process, in which we specify `scoring = 'recall'`. Our model performs nearly the same on the train and test (validation) data. We can probably get this even higher after we simplify our model some more.
 
-[add table?]
+<p align="center"><img src="Images/1st Model CV.png"></p>
 
 **Finetuning `C` with Cross Validation:** Creating a loop to test out `C` values `[0.0001, 0.001, 0.01, 0.1, 1]` we find that the lowest `C` yields the highest `recall`. 
 
 Our optimized results after finetuning the `C` look pretty good, though around the same as before optimization. Once we attempt to simplify some more, we will want to look at other scores such as accuracy and precision to make sure our results are balanced enough for the business problem at hand.
 
-[add table?]
+<p align="center"><img src="Images/1st Model CV Optimized.png"></p>
 
 ### 2nd Model
 As prevously stated, we know that there are features that are highly correlated. We use `SelectFromModel` to select features for us that are most important. After additional preprocessing with `SelectFromModel` we run and cross validate using the same `ModCrossVal` class.
@@ -127,7 +127,7 @@ We will use the default threshold to start and identify which features meet thre
 
 Our Logistic Select model did pretty well! It performed slightly better at recall than our first Logtistic L1 model.
 
-[add table?]
+<p align="center"><img src="Images/2nd Model CV Optimized.png"></p>
 
 <p align="center"><img src="Images/Log L1 vs Log Select.jpeg"></p>
 
@@ -137,7 +137,7 @@ For our final itteration of the LogisticRegression model we should try manual fe
 
 Here we redefined our DataFrame:
 
-![3rd Model DataFrame](https://github.com/erankova/Phase_3_Project/blob/19177be3c607fadfbc890c9a19d165b43316d727/Images/3rd%20Model%20DataFrame.png)
+<p align="center"><img src="Images/3rd Model DataFrame.png"></p>
 
  **Before finetuning** and after performing a new split and re-applying `SMOTE` to the fresh data, we run our results. Our model performs slightly worse than our previous two.
 
@@ -147,7 +147,7 @@ We get an extremely high recall score after optimizing! We will definitely want 
 
 It is also great to see that our bias and variance are balanced as our train and validation performance on all models is mostly even.
 
-![Logreg Result Summary] ()
+<p align="center"><img src="Images/3rd Model CV Optimized.png"></p>
 
 ### Compare Optimized Logistic Models
 
@@ -155,5 +155,22 @@ Comparing confusion matrices of all 3 `LogisticRegression` models, our most rece
 
 This can provide valuable intervention insights to our stakeholders given a strategic approach to address the high amount False Positives (customers appearing to potentially churn but actually end up retained).
 
-![Logistic Model Comparison] (https://github.com/erankova/Phase_3_Project/blob/26fbc86fc8f243d495fc77d9c3b1fb6f9045a231/Images/Logistic%20Model%20Comparison.jpeg)
+<p align="center"><img src="Images/Logistic Model Comparison.jpeg"></p>
 
+## Final Evaluation & Conclusion
+
+**Data Limitation**
+
+
+**Recommendations**
+
+
+**Positive Implications:**
+
+_Customer Retention:_ High recall means that your model is effective at identifying customers who are likely to churn. This allows your business to proactively intervene and take steps to retain these customers, such as offering incentives, personalized promotions, or improved customer service.
+Reduced Churn: By effectively targeting at-risk customers, you may be able to reduce the overall churn rate, leading to increased customer retention and long-term profitability.
+
+**Negative Implications:**
+
+_Costs:_ A low precision score means that there may be a significant number of false positives, leading to unnecessary costs associated with retaining customers who were not actually at risk of churning. These costs may include incentives or discounts offered to retain customers.
+Customer Experience: Misclassifying customers who were not actually at risk of churning as "churners" may lead to unnecessary interventions or communications, potentially impacting the customer experience negatively.
