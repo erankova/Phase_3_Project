@@ -108,12 +108,16 @@ To start, we evaluate a basic `LogisticRegression` model, before applying `SMOTE
 
 To choose the right solver, we run this model with both L1 and L2 solvers. It looks like the Logisic L1 model does better than both previous models but only slightly. However our class imbalance makes it difficult to assess accurately and needs to be addressed.
 
-After applying `SMOTE` with an even 0:1 split, we cross validate our model with the `ModCrossVal` class created to make cross validation an easier process. Our model performs nearly the same on the train and test (validation) data. We can probably get this even higher after we simplify our model some more.
-<center>
-Model Name| CV Train Mean | CV Test Mean |  CV Test Std |
-| :---:   | :---: | :---: | :---: | 
-| Logistic L1 | 0.786565 |0.773988 |	0.024945 |
-</center>
+After applying `SMOTE` with an even 0:1 split, we cross validate our model with the `ModCrossVal` class created to make cross validation an easier process, in which we specify `scoring = 'recall'`. Our model performs nearly the same on the train and test (validation) data. We can probably get this even higher after we simplify our model some more.
+
+<center>![image](https://github.com/erankova/Phase_3_Project/assets/155934070/b9e0b013-aa21-46f4-ab83-c5faeee14514)</center>
+
+**Finetuning `C` with Cross Validation:** Creating a loop to test out `C` values [0.0001, 0.001, 0.01, 0.1, 1] we find that the lowest `C` yields the highest `recall`. 
+
+Our optimized results after finetuning the `C` look pretty good, though around the same as before optimization. Once we attempt to simplify some more, we will want to look at other scores such as accuracy and precision to make sure our results are balanced enough for the business problem at hand.
+
+<center>![image](https://github.com/erankova/Phase_3_Project/assets/155934070/5b7d0d2a-a1db-4255-9c0f-be1a0b12cbd6)</center>
+
 
 
    
