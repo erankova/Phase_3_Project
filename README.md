@@ -179,7 +179,8 @@ _Costs:_ A low precision score means that there may be a significant number of f
 
 _Customer Experience:_ Misclassifying customers who were not actually at risk of churning as "churners" may lead to unnecessary interventions or communications, potentially impacting the customer experience negatively.
 
-**Data Limitation and Future Considerations**
+**Data Limitation and Future Considerations:**
+
 When looking to optimize our results and produce the most accurate prediction of customers who are likely to churn, we find that it may be best to use a combination of classifier models to balance precision and recall. However, given the need to edit the training data, this posed an issue. In the future, we would recommend gathering additional data to account for class imbalance and revising which feature hold importance in relation to churn. 
 
 By simplifying the data before modeling, we are more likely to yield positive results and open up options to combine models using the same training data for a more balanced learning mechanism.
