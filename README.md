@@ -77,7 +77,7 @@ For our 3rd model we took a manual approach and redefined the DataFrame criteria
 
 We decided to only include highly correlated variables since we had previously stated there were some features which had extremely high correlations with eachother. For this model we were left with only the features seen below in a heatmap no longer demonstrating any co-linearity.
 
-<p align="center"><img src="Images/Data Exploration Heatmap.jpeg"/></p>
+<p align="center"><img src="Images/Model 3 Heatmap.jpeg"/></p>
 
 Since tranforming column names applies generally to the dataframe, we did not have to repeat this as it was already complete as the first pre-processing step.
 
@@ -159,18 +159,27 @@ This can provide valuable intervention insights to our stakeholders given a stra
 
 ## Final Evaluation & Conclusion
 
-**Data Limitation**
+[a note about which model we chose and why]
 
+### Recommendations
 
-**Recommendations**
+As this is phase 1 of the project, we are hyper focused on identifying True Positive cases while reducing False Negative instances. Therefore, we are primarily focused on recall or true positive rate.
 
+To account for our recall-focused path, a variety of low touch to high touch engagement models is recommended to account for the high number of False Positives within these models. An automated low touch model to start and gather data on customer satisfaction of those predicted to churn will yeild best results. Acting accordingly with a scaled  approach given the feedback collected will be crutial and create a positive customer experience for all.
 
 **Positive Implications:**
 
-_Customer Retention:_ High recall means that your model is effective at identifying customers who are likely to churn. This allows your business to proactively intervene and take steps to retain these customers, such as offering incentives, personalized promotions, or improved customer service.
-Reduced Churn: By effectively targeting at-risk customers, you may be able to reduce the overall churn rate, leading to increased customer retention and long-term profitability.
+_Customer Retention:_ High recall means that your model is effective at identifying customers who are likely to churn. This allows the business to proactively intervene and take steps to retain these customers, such as offering incentives, personalized promotions, or improved customer service.
+
+_Reduced Churn:_ By effectively targeting at-risk customers, you may be able to reduce the overall churn rate, leading to increased customer retention and long-term profitability.
 
 **Negative Implications:**
 
-_Costs:_ A low precision score means that there may be a significant number of false positives, leading to unnecessary costs associated with retaining customers who were not actually at risk of churning. These costs may include incentives or discounts offered to retain customers.
-Customer Experience: Misclassifying customers who were not actually at risk of churning as "churners" may lead to unnecessary interventions or communications, potentially impacting the customer experience negatively.
+_Costs:_ A low precision score means that there may be a significant number of false positives, leading to unnecessary costs associated with retaining customers who were not actually at risk of churning. These costs may include incentives or discounts offered to retain customers. 
+
+_Customer Experience:_ Misclassifying customers who were not actually at risk of churning as "churners" may lead to unnecessary interventions or communications, potentially impacting the customer experience negatively.
+
+**Data Limitation and Future Considerations**
+When looking to optimize our results and produce the most accurate prediction of customers who are likely to churn, we find that it may be best to use a combination of classifier models to balance precision and recall. However, given the need to edit the training data, this posed an issue. In the future, we would recommend gathering additional data to account for class imbalance and revising which feature hold importance in relation to churn. 
+
+By simplifying the data before modeling, we are more likely to yield positive results and open up options to combine models using the same training data for a more balanced learning mechanism.
