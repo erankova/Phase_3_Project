@@ -42,13 +42,48 @@ In addition, there is a near perfect correlation between `number_vmail_messages`
 
 Lastly, there are a couple of weak correlations associated with our target `churn` variable; It seems `customer_service_calls`, `international_plan` and `total_day_minutes` have a slight positive correlation with churn. While weak correlations, we would want to consider including these features in our models.
 
-![alt text](Phase_3_Project/Images/Data Exploration Heatmap.png)
+![alt text](Phase_3_Project/Images/Data Exploration Heatmap.jpeg)
 
 # Data Preperation
 
 To prepare the data for modeling, several steps had to be taken as described below.
 
-### Pre-Split: 
+## Model 1 & 2
+Given our selected approach to these `LogisticRegression` models, we had slightly different steps applied depending on the model.
 
+#### Pre-Split
+
+Before splitting our data between train and test, we performed some simple processing:
+
+- Since the column names were formatted with a space between words, we transformed them to include and underscore as per column name standard formatting
+- `LabelEncoder` was used to perform transformtions on the following categorical columns:
+  - `churn` orriginally in binary True/False format
+  - `international_plan` and `voice_mail_plan` in binary Yes/No format
+- Dropped `phone_number` column as there were no duplicate entries as mentioned previously
+
+#### Post-Split
+
+After splitting our data into a train and test we had to perform a couple of other transformations depending on the model criteria.
+
+For the first two models we used `OneHotEncoder` to transform the `area_code` and `state` categorical columns to numerical format. This left us with an `X_train` containing 69 features. In addition, we used `SMOTE` to resample our data and handle class imbalance.
+
+**Model 2 with `SelectFromModel`** to aid with important feature selection we called on this meta-transformer to reduce our 
+
+## Model 3
+
+For our 3rd model we took a manual approach and redefined the DataFrame criteria which lead us to having to conduct a fresh train/test split.
+
+#### Pre-Split
+
+We decided to only include highly correlated variables since we had previously stated there were some features which had extremely high correlations with eachother. For this model we were left with only the features seen below in a heatmap no longer demonstrating any co-linearity.
+
+![alt text](Phase_3_Project/Images/Model 3 Heatmap.jpeg)
+
+Since tranforming column names applies generally to the dataframe, we did not have to repeat this as it was already complete as the first pre-processing step.
+
+#### Post-Split
+
+Since we redefined a new `X` and `y` we also applied `SMOTE` to this fresh data set, creating reduced versious of our training data. 
+> Sinced we eliminated any categorical columns in need of transformation, the `OneHotEncoder` was not necessary for this model.
 
    
