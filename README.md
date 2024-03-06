@@ -32,7 +32,7 @@ The dataset contains data on the customers of a Telecom company. Each row repres
 #### Class Imbalance
 This is an imbalanced dataset, with 14.5% of customers lost, balancing will be necessary 
 
-![image description] (Images/Class Imbalance.jpeg)
+![image] (Phase_3_Project/Images/Class Imbalance.jpeg)
 
 #### There are several correlations worth noting:
 `total_intl_charge`, `total_day_charge`, total_eve_charge`, and `total_night_charge` is perfectly correlated with `total_intl_minutes`, `total_day_minutes`, total_eve_minutes`, and `total_night_minutes` respectively. This makes sense since the company is charging by the minute. 
@@ -42,5 +42,5 @@ In addition, there is a near perfect correlation between `number_vmail_messages`
 
 Lastly, there are a couple of weak correlations associated with our target `churn` variable; It seems `customer_service_calls`, `international_plan` and `total_day_minutes` have a slight positive correlation with churn. While weak correlations, we would want to consider including these features in our models.
 
-![image description](Images/Data Exploration Heatmap.png)
+![image](Phase_3_Project/Images/Data Exploration Heatmap.png)
    
