@@ -100,6 +100,18 @@ We build our base model with `DummyClassifier` using the `stratified` strategy s
 From the get go our Base model produced an average `accuracy` score of ~0.75. This is a good start and gives us confidence to proceed with improving our `recall` and still maintianing fairly balanced results.
 
 #### 1st Model
-To start, 
+To start, we evaluate a basic `LogisticRegression` model, before applying `SMOTE`. We use the detault L2 penalty with this initial model.
+
+**Comparing our first `LogisticRegression` model with our `base`**, we can see that our `LogisticRegression` model does somewhat better at predicting `churn` with a higher True Positive Rate than our `base`.
+
+![alt text](Phase_3_Project/Images/Base vs Log.jpeg)
+
+To choose the right solver, we run this model with both L1 and L2 solvers. It looks like the Logisic L1 model does better than both previous models but only slightly. However our class imbalance makes it difficult to assess accurately and needs to be addressed.
+
+After applying `SMOTE` with an even 0:1 split, we cross validate our model with the `ModCrossVal` class created to make cross validation an easier process. Our model performs nearly the same on the train and test (validation) data. We can probably get this even higher after we simplify our model some more.
+
+Model Name| CV Train Mean | CV Test Mean |  CV Test Std |
+| :---:   | :---: | :---: | :---: | 
+| Logistic L1 | 0.786565 |0.773988 |	0.024945 |
 
    
