@@ -38,18 +38,20 @@ This is an imbalanced dataset, with 14.5% of customers lost, balancing will be n
 `total_intl_charge`, `total_day_charge`, total_eve_charge`, and `total_night_charge` is perfectly correlated with `total_intl_minutes`, `total_day_minutes`, total_eve_minutes`, and `total_night_minutes` respectively. This makes sense since the company is charging by the minute. 
 > If we need to, we can confidently drop the 'charge' column from each category; day, eve, night, and intl. We can keep the 'minutes' category as it is unclear what currency metric 'charge' is referring to.
 
-In addition, there is a near perfect correlation between `number_vmail_messages` and `voice_mail_plan`, this makes sense and these two columns much like 'charge' and 'minutes' are telling us the same thing. If we need to, we can drop `number_vmail_messages`.
+In addition, there is a near perfect correlation between `number_vmail_messages` and `voice_mail_plan`, this makes sense and these two columns much like 'charge' and 'minutes' are telling us the same thing. 
+> If we need to, we can drop `number_vmail_messages`.
 
-Lastly, there are a couple of weak correlations associated with our target `churn` variable; It seems `customer_service_calls`, `international_plan` and `total_day_minutes` have a slight positive correlation with churn. While weak correlations, we would want to consider including these features in our models.
+Lastly, there are a couple of weak correlations associated with our target `churn` variable; It seems `customer_service_calls`, `international_plan` and `total_day_minutes` have a slight positive correlation with churn. 
+> While weak correlations, we would want to consider including these features in our models.
 
 ![alt text](Phase_3_Project/Images/Data Exploration Heatmap.jpeg)
 
 # Data Preperation
 
-To prepare the data for modeling, several steps had to be taken as described below.
+To prepare the data for modeling, several steps had to be taken as described below. All train/test splits maintain the default .75/.25 proportion respectively. We know we have class imbalance, so we will have `stratify = y` so our class proportions stay the same for both our train and test data.
 
 ## Model 1 & 2
-Given our selected approach to these `LogisticRegression` models, we had slightly different steps applied depending on the model.
+Given our selected approach to these `LogisticRegression` models, we had slightly different steps applied depending on the model. All train/test splits maintain 
 
 #### Pre-Split
 
@@ -85,5 +87,19 @@ Since tranforming column names applies generally to the dataframe, we did not ha
 
 Since we redefined a new `X` and `y` we also applied `SMOTE` to this fresh data set, creating reduced versious of our training data. 
 > Sinced we eliminated any categorical columns in need of transformation, the `OneHotEncoder` was not necessary for this model.
+
+# Modeling
+
+Focusing on predicting churn, we will focus on finetuning to the `recall` metric to ensure we are predicting as many True Positive results (customers predicted to churn who churn) and reducing False Negative (customers predicted to be retained who churn) as much as possible. 
+
+Our business initiatives are not high risk so a somewhat disproportionate amount of False Positives (customers predicted to churn who are retained) is tolerated and approach to this sect of customers will be addressed within our evaluation and recommendations.
+
+#### Base Model
+We build our base model with `DummyClassifier` using the `stratified` strategy since we have an imbalanced dataset skewed in the direction of class 0 when we are interested in predicting class 1. We do not apply `SMOTE` here to get truly baseline results.
+
+From the get go our Base model produced an average `accuracy` score of ~0.75. This is a good start and gives us confidence to proceed with improving our `recall` and still maintianing fairly balanced results.
+
+#### 1st Model
+To start, 
 
    
