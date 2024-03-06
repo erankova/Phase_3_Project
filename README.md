@@ -131,11 +131,12 @@ Our Logistic Select model did pretty well! It performed slightly better at recal
 
 [add table?]
 
-![alt text](Phase_3_Project/Images/Log L1 vs Log Select.jpeg)
+![Log L1 vs Log Select](Phase_3_Project/Images/Log L1 vs Log Select.jpeg)
 
 ### 3rd Model
 
 For our final itteration of the LogisticRegression model we should try manual feature selection with features we know to be highly correlated with `churn`. 
 
-Here we redefined our DataFrame
+Here we redefined our DataFrame:
 
+![3rd Model DataFrame](https://github.com/erankova/Phase_3_Project/blob/19177be3c607fadfbc890c9a19d165b43316d727/Images/3rd%20Model%20DataFrame.png)
