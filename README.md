@@ -1,4 +1,4 @@
-# Know Your Customer
+# SyriaTel: Know Your Customer
 
 ### David Johnson and Elina Rankova
 
