@@ -109,9 +109,11 @@ To start, we evaluate a basic `LogisticRegression` model, before applying `SMOTE
 To choose the right solver, we run this model with both L1 and L2 solvers. It looks like the Logisic L1 model does better than both previous models but only slightly. However our class imbalance makes it difficult to assess accurately and needs to be addressed.
 
 After applying `SMOTE` with an even 0:1 split, we cross validate our model with the `ModCrossVal` class created to make cross validation an easier process. Our model performs nearly the same on the train and test (validation) data. We can probably get this even higher after we simplify our model some more.
-
+<center>
 Model Name| CV Train Mean | CV Test Mean |  CV Test Std |
 | :---:   | :---: | :---: | :---: | 
 | Logistic L1 | 0.786565 |0.773988 |	0.024945 |
+</center>
+
 
    
