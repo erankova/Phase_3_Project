@@ -3,7 +3,7 @@
 #### David Johnson and Elina Rankova
 
 <div style="width: 100%; text-align: center;">
-  <img src="[https://www.citylit.ac.uk/media/amasty/blog/film_v1-min.jpg](https://media.licdn.com/dms/image/C4D12AQH-Qk_eTZv6iA/article-cover_image-shrink_720_1280/0/1622638706496?e=1715212800&v=beta&t=a3k-gWfqrlzfv7inhVBpUU9xxPjnJ0of4viF4tFu-Oc)" width="720" height="450" style="margin: 0 auto;"/>
+  <img src="https://media.licdn.com/dms/image/C4D12AQH-Qk_eTZv6iA/article-cover_image-shrink_720_1280/0/1622638706496?e=1715212800&v=beta&t=a3k-gWfqrlzfv7inhVBpUU9xxPjnJ0of4viF4tFu-Oc" width="720" height="450" style="margin: 0 auto;"/>
 </div>
 
 <u>image source</u>: <a href="https://www.linkedin.com/pulse/churn-analysis-smriti-saini/">Churn Analysis Article</a>
@@ -31,7 +31,8 @@ The dataset contains data on the customers of a Telecom company. Each row repres
 
 #### Class Imbalance
 This is an imbalanced dataset, with 14.5% of customers lost, balancing will be necessary 
-![alt text] (Images/Class Imbalance.jpeg)
+
+![image description] (Images/Class Imbalance.jpeg)
 
 #### There are several correlations worth noting:
 `total_intl_charge`, `total_day_charge`, total_eve_charge`, and `total_night_charge` is perfectly correlated with `total_intl_minutes`, `total_day_minutes`, total_eve_minutes`, and `total_night_minutes` respectively. This makes sense since the company is charging by the minute. 
@@ -41,5 +42,5 @@ In addition, there is a near perfect correlation between `number_vmail_messages`
 
 Lastly, there are a couple of weak correlations associated with our target `churn` variable; It seems `customer_service_calls`, `international_plan` and `total_day_minutes` have a slight positive correlation with churn. While weak correlations, we would want to consider including these features in our models.
 
-![alt text](Images/Data Exploration Heatmap.png)
+![image description](Images/Data Exploration Heatmap.png)
    
