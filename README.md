@@ -192,3 +192,14 @@ When looking to optimize our results and produce the most accurate prediction of
 In <ins>_Phase 2_</ins>, we would recommend gathering additional data to account for class imbalance and revising which feature hold importance in relation to churn. 
 
 By simplifying the data before modeling, we are more likely to yield positive results and open up options to combine models using the same training data for a more balanced learning mechanism.
+
+## Repository Structure
+
+```
+├── Data
+├── Images
+├── .gitignore
+├── Know Your Customer.pdf
+├── SyriaTel_Churn_Model.ipynb
+└── README.md
+```
