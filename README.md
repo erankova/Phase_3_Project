@@ -187,11 +187,12 @@ To account for our recall-focused path, a variety of low touch to high touch eng
 
 **Data Limitation and Future Considerations:**
 
-When looking to optimize our results and produce the most accurate prediction of customers who are likely to churn, we find that it may be best to use a combination of classifier models to balance precision and recall. However, given the need to edit the training data, this posed an issue. 
+When looking to optimize our results and produce the most accurate prediction of customers who are likely to churn, we find that it may be best to use a combination of classifier models to balance precision and recall. However, given the need to edit the training data, this posed an issue. In addition, for high class parameter tuning, we would recommend implementing `GridSearchCV` to get a better balance between recall, percision, and accuracy.
 
 In <ins>_Phase 2_</ins>, we would recommend gathering additional data to account for class imbalance and revising which feature hold importance in relation to churn. 
 
 By simplifying the data before modeling, we are more likely to yield positive results and open up options to combine models using the same training data for a more balanced learning mechanism.
+
 
 ## Repository Structure
 
