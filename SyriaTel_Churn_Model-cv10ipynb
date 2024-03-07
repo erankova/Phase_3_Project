@@ -5132,6 +5132,7 @@
     }
    ],
    "source": [
+    "# Get final train recall\n",
     "\n",
     "logregl1_recall = get_recall(model=logregl1_opt,model_name=\"Logistic L1\",X=X_train_resampled,y=y_train_resampled)\n",
     "logregl1_recall"
@@ -7349,7 +7350,7 @@
     }
    ],
    "source": [
-    "# Compare recall so far\n",
+    "# Compare final train recall\n",
     "\n",
     "recall_results.append(logreg_slct_recall)\n",
     "\n",
@@ -8371,7 +8372,7 @@
     }
    ],
    "source": [
-    "# Compare recall so far\n",
+    "# Compare final train recall for all Logistic Models\n",
     "\n",
     "recall_results.append(logreg_red_recall)\n",
     "\n",
