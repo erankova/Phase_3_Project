@@ -77,7 +77,7 @@ For our 3rd model we took a manual approach and redefined the DataFrame criteria
 
 We decided to only include highly correlated variables since we had previously stated there were some features which had extremely high correlations with eachother. For this model we were left with only the features seen below in a heatmap no longer demonstrating any co-linearity.
 
-<p align="center"><img src="Images/Model 3 Heatmap.jpeg"/></p>
+<p align="center"><img src="Images/Model 3 Heatmap.png"/></p>
 
 Since tranforming column names applies generally to the dataframe, we did not have to repeat this as it was already complete as the first pre-processing step.
 
@@ -112,7 +112,7 @@ After applying `SMOTE` with an even 0:1 split, we cross validate our model with 
 
 **Finetuning `C` with Cross Validation:** Creating a loop to test out `C` values `[0.0001, 0.001, 0.01, 0.1, 1]` we find that the lowest `C` yields the highest `recall`. 
 
-Our optimized results after finetuning the `C` look pretty good, though around the same as before optimization. Once we attempt to simplify some more, we will want to look at other scores such as accuracy and precision to make sure our results are balanced enough for the business problem at hand.
+Our optimized results after finetuning the `C` look pretty good, though slightly less than before optimizing `C`. Once we attempt to simplify some more, we will want to look at other scores such as accuracy and precision to make sure our results are balanced enough for the business problem at hand.
 
 <p align="center"><img src="Images/1st Model CV Optimized.png"></p>
 
@@ -125,11 +125,11 @@ We will use the default threshold to start and identify which features meet thre
 
 **Finetuning `C` with Cross Validation:** Just like our Logreg L1 model and using the same test `C` values, the Logreg Select model does best with smaller `C` values, so we will want to use the smallest value with our optimized model.
 
-Our Logistic Select model did pretty well! It performed slightly better at recall than our first Logtistic L1 model.
+Our Logistic Select model did pretty well though It performed around the same as our first Logtistic model after optimization.
 
 <p align="center"><img src="Images/2nd Model CV Optimized.png"></p>
 
-<p align="center"><img src="Images/Log L1 vs Log Select.jpeg"></p>
+<p align="center"><img src="Images/Log L1 vs Log Select.png"></p>
 
 ### 3rd Model
 
@@ -143,9 +143,7 @@ Here we redefined our DataFrame:
 
 **Finetuning `C` with Cross Validation:** Using a different set of tests `C` values `[0.00015, 0.0002, 0.0015, 0.002, .015]` , the smallest `C` values gives us the best results. We will again, use the smallest value within our optimized results.
 
-We get an extremely high recall score after optimizing! We will definitely want to make sure we balance accuracy within our decision making process. All in all, it seems like our manual feature selection yields the best recall.
-
-It is also great to see that our bias and variance are balanced as our train and validation performance on all models is mostly even.
+We get a pretty good recall score after optimizing! We will definitely want to make sure we balance accuracy within our decision making process. All in all, it seems like our manual feature selection yields the best recall.
 
 <p align="center"><img src="Images/3rd Model CV Optimized.png"></p>
 
