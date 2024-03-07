@@ -147,13 +147,13 @@ We get a pretty good recall score after optimizing! We will definitely want to m
 
 <p align="center"><img src="Images/3rd Model CV Optimized.png"></p>
 
-### Compare Optimized Logistic Models
+### Compare Optimized Logistic Models on Train Data
 
 Comparing confusion matrices of all 3 `LogisticRegression` models, our most recent Logistic Reduced model does best at predicting True Positives (customers going to churn) and reducing False Negatives (customers appearing to be retained but who actually churn).
 
 This can provide valuable intervention insights to our stakeholders given a strategic approach to address the high amount False Positives (customers appearing to potentially churn but actually end up retained).
 
-<p align="center"><img src="Images/Logistic Model Comparison.jpeg"></p>
+<p align="center"><img src="Images/Logistic Model Comparison.png"></p>
 
 ### Run Final Models on Test
 
