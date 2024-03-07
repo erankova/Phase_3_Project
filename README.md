@@ -157,6 +157,12 @@ This can provide valuable intervention insights to our stakeholders given a stra
 
 <p align="center"><img src="Images/Logistic Model Comparison.jpeg"></p>
 
+### Run Final Models on Test
+
+We now run our models with test data and evaluate each classification report associated. As expected, our 3rd Model produces the highest recall. As this is our primary focus for Phase 1 of this business initiative we will want to recommend deployment of this model and address the concerns regarding our lower precision and accuracy scores within our approach recommendations as well as next steps.
+
+
+
 ## Final Evaluation & Conclusion
 
 After careful consideration we are recommending to implement Model 3 with manual feature selection of highly correlated variables. This model provides the highest Recall or True Postive Rate and most closely satisfies the goals of <ins>_Phase 1_</ins> of this business initiative. Below we go into detail regarding this decision including additional recommendation on intervention approach.
