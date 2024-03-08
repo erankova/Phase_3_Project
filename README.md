@@ -177,10 +177,9 @@ To confirm that our train data is not underfitting we run the `DecisionTreeClass
 
 To confirm that our train data is not underfitting we now run the `DecisionTreeClassifier` on our test data. Our results look good! Our recall on the test is slighly lower than on the train but overall they look balanced. Our `DecisionTreeCassifier` model has outperformed all of our `LogisticRegression`
 
+<p align="center"><img src="Images/Tree Classification Report.png"></p>
+
 <p align="center"><img src="Images/Decision Tree.png"></p>
-
-
-<p align="center"><img src="Images/Decision Tree Matrix.png"></p>
 
 
 ## Final Evaluation & Conclusion
