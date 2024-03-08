@@ -42,7 +42,7 @@ In addition, there is a near perfect correlation between `number_vmail_messages`
 Lastly, there are a couple of weak correlations associated with our target `churn` variable; It seems `customer_service_calls`, `international_plan` and `total_day_minutes` have a slight positive correlation with churn. 
 > While weak correlations, we would want to consider including these features in our models.
 
-<p align="center"><img src="Images/Data Exploration Heatmap.jpeg" /></p>
+<p align="center"><img src="Images/Data Exploration Heatmap.png" /></p>
 
 ## Data Preperation
 
